@@ -6,11 +6,32 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 17:32:32 by acan              #+#    #+#             */
-/*   Updated: 2023/09/30 14:18:25 by acan             ###   ########.fr       */
+/*   Updated: 2023/09/30 16:48:43 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static int findsmallest(t_stack **a)
+{
+	t_stack	*tmp;
+	int	min;
+	int smallest;
+	
+	tmp = (*a);
+	min = (*a)->content;
+	smallest = (*a)->index;
+	while (tmp)
+	{
+		if (tmp->content < min)
+		{
+			min = tmp->content;
+			smallest = tmp->index;
+		}
+		tmp = tmp->next;
+	}
+	return (smallest);
+}
 
 static void	sortthree(t_stack **a)
 {
@@ -39,56 +60,29 @@ static void	sortthree(t_stack **a)
 		rra (a, 0);
 }
 
-static void	sortfour(t_stack **a, t_stack **b)
+static void	sortfour(t_stack **a, t_stack **b, int smallest)
 {
-	int		smallest;
-	int		min;
-	t_stack	*tmp;
-
-	tmp = (*a);
-	min = (*a)->content + 1;
-	smallest = (*a)->index;
-	while (tmp)
-	{
-		if (tmp->content < min)
-		{
-			min = tmp->content;
-			smallest = tmp->index + 1;
-		}
-		tmp = tmp->next;
-	}
-	while (--smallest)
+	while (smallest--)
 		ra(a, 0);
 	pb (a, b);
 	sortthree(a);
 	pa (a, b);
 }
 
-static void	sortfive(t_stack **a, t_stack **b)
+static void	sortfive(t_stack **a, t_stack **b, int smallest)
 {
-	int		smallest;
-	int		min;
-	t_stack	*tmp;
-
-	tmp = (*a);
-	min = (*a)->content;
-	while (tmp)
-	{
-		if (tmp->content < min)
-		{
-			min = tmp->content;
-			smallest = tmp->index + 1;
-		}
-		tmp = tmp->next;
-	}
 	if (smallest > 3)
-		while (smallest++ < ft_stacklast((*a))->index + 2)
+	{
+		while (smallest++ < ft_stacklast((*a))->index + 1)
 			rra (a, 0);
+	}
 	else
-		while (smallest--)
+	{	smallest++;
+		while (--smallest)
 			ra (a, 0);
+	}
 	pb (a, b);
-	sortfour (a, b);
+	sortfour (a, b, findsmallest(a));
 	pa (a, b);
 }
 
@@ -99,7 +93,7 @@ void	sortcheck(t_stack **a, t_stack **b, int len)
 	if (len == 2)
 		sortthree (a);
 	if (len == 3)
-		sortfour (a, b);
+		sortfour (a, b, findsmallest(a));
 	if (len == 4)
-		sortfive (a, b);
+		sortfive (a, b, findsmallest(a));
 }

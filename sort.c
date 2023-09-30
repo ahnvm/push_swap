@@ -6,7 +6,7 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 16:15:36 by acan              #+#    #+#             */
-/*   Updated: 2023/09/30 13:46:16 by acan             ###   ########.fr       */
+/*   Updated: 2023/09/30 16:34:41 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 static int	movecounter(t_stack **a)
 {
 	t_stack	*tmp;
-	int		firstmvcount;
+	long	firstmvcount;
 	int		secondmvcount;
 
-	firstmvcount = -1;
+	firstmvcount = 2147483648;
 	secondmvcount = -1;
 	tmp = (*a);
 	while (tmp)
@@ -33,13 +33,14 @@ static int	movecounter(t_stack **a)
 					secondmvcount = tmp->index;
 		tmp = tmp->next;
 	}
-	if (firstmvcount == -1)
+	if (firstmvcount == 2147483648)
 		return (secondmvcount);
-	if (firstmvcount > secondmvcount-(ft_stacklast((*a))->index) + 1)
+	if (firstmvcount > ft_stacklast(*a)->index-secondmvcount + 1)
 		return (secondmvcount);
 	else
 		return (firstmvcount);
 }
+
 
 void	pushback(t_stack **a, t_stack **b)
 {
@@ -49,16 +50,17 @@ void	pushback(t_stack **a, t_stack **b)
 	tmp = (*b);
 	while (ft_stacklast(*b)->index >0)
 	{
-		biggestindex = getbiggest(b) + 1;
-		if (biggestindex > ft_stacklast(*b)->index/2)
+		biggestindex = getbiggest(b);
+		if (biggestindex >= ft_stacklast(*b)->index/2)
 		{
-			while(--biggestindex)
+			biggestindex = ft_stacklast(*b)->index - biggestindex + 1;
+			while(biggestindex--)
 				rrb(b,0);
 			pa(a,b);
 		}
 		else
 		{
-			while(--biggestindex)
+			while(biggestindex--)
 				rb(b,0);
 			pa(a,b);
 		}
@@ -72,17 +74,17 @@ void	basicsort(t_stack **a, t_stack **b)
 
 	while (ft_stacklast(*a) -> index >4)
 	{
-		movecount = movecounter(a) + 1;
-		if (movecount > ((ft_stacklast((*a))->index) / 2))
+		movecount = movecounter(a);
+		if (movecount >= ((ft_stacklast((*a))->index) / 2))
 			{
-				movecount = ft_stacklast((*a))->index - movecounter(a) + 2;
-				while (--movecount > 0)
+				movecount = ft_stacklast((*a))->index - movecounter(a) + 1;
+				while (movecount-- > 0)
 					rra(a,0);
 				pb(a,b);
 			}
 		else
 		{
-			while (--movecount > 0)
+			while (movecount-- > 0)
 				ra(a,0);
 			pb(a,b);
 		}

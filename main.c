@@ -6,7 +6,7 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 15:08:59 by acan              #+#    #+#             */
-/*   Updated: 2023/09/30 13:34:11 by acan             ###   ########.fr       */
+/*   Updated: 2023/09/30 16:48:21 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,6 @@ int	main(int ac, char **av)
 		exit(0);
 	if (ft_stacklast((*a)) ->index < 5)
 		sortcheck(a,b,ft_stacklast((*a))->index);
-	basicsort(a,b);
+	else
+		basicsort(a,b);
 }
