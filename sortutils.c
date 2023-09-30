@@ -6,7 +6,7 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 16:48:49 by acan              #+#    #+#             */
-/*   Updated: 2023/09/30 16:25:04 by acan             ###   ########.fr       */
+/*   Updated: 2023/09/30 17:06:21 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,12 @@ int	getbiggest(t_stack **b)
 		tmp = tmp->next;
 	}
 	return (retindex);
+}
+
+void	sorttry(t_stack **b)
+{
+	if ((*b)->next == NULL)
+		return ;
+	if ((*b)->content < getaverage(b))
+		rb(b,0);
 }

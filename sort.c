@@ -6,7 +6,7 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 16:15:36 by acan              #+#    #+#             */
-/*   Updated: 2023/09/30 16:34:41 by acan             ###   ########.fr       */
+/*   Updated: 2023/09/30 17:06:43 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,14 @@ void	basicsort(t_stack **a, t_stack **b)
 				while (movecount-- > 0)
 					rra(a,0);
 				pb(a,b);
+				sorttry(b);
 			}
 		else
 		{
 			while (movecount-- > 0)
 				ra(a,0);
 			pb(a,b);
+			sorttry(b);
 		}
 	}
 	sortcheck(a, b, ft_stacklast(*a)->index);

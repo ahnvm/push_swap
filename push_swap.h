@@ -6,7 +6,7 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 14:59:03 by acan              #+#    #+#             */
-/*   Updated: 2023/09/30 13:38:23 by acan             ###   ########.fr       */
+/*   Updated: 2023/09/30 17:06:30 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ void	basicsort(t_stack **a, t_stack **b);
 void	print_list(t_stack **mystack);
 int		fifthbiggest(t_stack **a, int five);
 int		getbiggest(t_stack **b);
+void	sorttry(t_stack **b);
 
 #endif
