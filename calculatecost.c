@@ -6,7 +6,7 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 20:54:48 by acan              #+#    #+#             */
-/*   Updated: 2023/10/04 23:17:30 by acan             ###   ########.fr       */
+/*   Updated: 2023/10/05 01:24:12 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	setrr(t_stack **stack)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	tmp = *stack;
 	while (tmp)
 	{
-		if (tmp->index <= ft_stacklast(*stack)->index/2)
+		if (tmp->index <= ft_stacklast(*stack)->index / 2)
 		{
 			tmp->isrr = 0;
 		}
@@ -31,9 +31,9 @@ void	setrr(t_stack **stack)
 	}
 }
 
-t_stack *nodeofindex(int index, t_stack **stack)
+t_stack	*nodeofindex(int index, t_stack **stack)
 {
-	t_stack *ret;
+	t_stack	*ret;
 
 	ret = (*stack);
 	while (ret)
@@ -47,31 +47,32 @@ t_stack *nodeofindex(int index, t_stack **stack)
 
 void	settarget(t_stack **a, t_stack **b)
 {
-	t_stack *tmpa;
-	t_stack *tmpb;
+	t_stack	*tmpa;
+	t_stack	*tmpb;
 
 	tmpa = *a;
 	tmpb = *b;
 	while (tmpa)
 	{
-		tmpa->target_node = nodeofindex(getsmallest(b),b);
-		 while (tmpb)
-		 {
-			if (tmpa -> content > tmpb ->content && tmpa->target_node->content < tmpb ->content)
+		tmpa->target_node = nodeofindex(getsmallest(b), b);
+		while (tmpb)
+		{
+			if (tmpa->content > tmpb->content
+				&& tmpa->target_node->content < tmpb->content)
 				tmpa->target_node = tmpb;
-			tmpb = tmpb ->next;
-		 }
-		 if (tmpa->target_node->content > tmpa ->content)
-		 	tmpa->target_node = nodeofindex(getbiggest(b), b);
-		 tmpb = *b;
-		 tmpa = tmpa->next;
+			tmpb = tmpb->next;
+		}
+		if (tmpa->target_node->content > tmpa->content)
+			tmpa->target_node = nodeofindex(getbiggest(b), b);
+		tmpb = *b;
+		tmpa = tmpa->next;
 	}
 }
 
 void	setcost(t_stack **a, t_stack **b)
 {
-	t_stack *tmpa;
-	t_stack *tmpb;
+	t_stack	*tmpa;
+	t_stack	*tmpb;
 
 	tmpa = *a;
 	tmpb = *b;
@@ -95,15 +96,20 @@ void	setcost(t_stack **a, t_stack **b)
 
 t_stack	*calculatecost(t_stack **a)
 {
-	t_stack *tmp;
-	t_stack *ret;
+	t_stack	*tmp;
+	t_stack	*ret;
 
 	tmp = *a;
 	ret = tmp;
 	while (tmp)
 	{
-		if ((tmp->cost + tmp->target_node->cost) < (ret->cost + ret->target_node->cost))
+		if ((tmp->cost + tmp->target_node->cost) < (ret->cost
+				+ ret->target_node->cost))
 			ret = tmp;
+		else if ((tmp->cost + tmp->target_node->cost) == (ret->cost
+				+ ret->target_node->cost))
+			if (tmp->isrr == tmp->target_node->isrr)
+				ret = tmp;
 		tmp = tmp->next;
 	}
 	return (ret);

@@ -6,18 +6,18 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 17:32:32 by acan              #+#    #+#             */
-/*   Updated: 2023/09/30 16:48:43 by acan             ###   ########.fr       */
+/*   Updated: 2023/10/05 00:34:00 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int findsmallest(t_stack **a)
+static int	findsmallest(t_stack **a)
 {
 	t_stack	*tmp;
-	int	min;
-	int smallest;
-	
+	int		min;
+	int		smallest;
+
 	tmp = (*a);
 	min = (*a)->content;
 	smallest = (*a)->index;
@@ -46,27 +46,27 @@ static void	sortthree(t_stack **a)
 	}
 	else if ((*a)->content > (*a)->next->content)
 	{
-		if ((*a)->next->content > (*a)->next ->next->content)
+		if ((*a)->next->content > (*a)->next->next->content)
 		{
-			sa (a, 0);
-			rra (a, 0);
+			sa(a, 0);
+			rra(a, 0);
 		}
 		else if ((*a)->content < (*a)->next->next->content)
-			sa (a, 0);
+			sa(a, 0);
 		else if ((*a)->content > (*a)->next->next->content)
-			ra (a, 0);
+			ra(a, 0);
 	}
 	else
-		rra (a, 0);
+		rra(a, 0);
 }
 
 static void	sortfour(t_stack **a, t_stack **b, int smallest)
 {
 	while (smallest--)
 		ra(a, 0);
-	pb (a, b);
+	pb(a, b);
 	sortthree(a);
-	pa (a, b);
+	pa(a, b);
 }
 
 static void	sortfive(t_stack **a, t_stack **b, int smallest)
@@ -74,26 +74,27 @@ static void	sortfive(t_stack **a, t_stack **b, int smallest)
 	if (smallest > 3)
 	{
 		while (smallest++ < ft_stacklast((*a))->index + 1)
-			rra (a, 0);
+			rra(a, 0);
 	}
 	else
-	{	smallest++;
+	{
+		smallest++;
 		while (--smallest)
-			ra (a, 0);
+			ra(a, 0);
 	}
-	pb (a, b);
-	sortfour (a, b, findsmallest(a));
-	pa (a, b);
+	pb(a, b);
+	sortfour(a, b, findsmallest(a));
+	pa(a, b);
 }
 
 void	sortcheck(t_stack **a, t_stack **b, int len)
 {
 	if (len == 1)
-		sa (a, 0);
+		sa(a, 0);
 	if (len == 2)
-		sortthree (a);
+		sortthree(a);
 	if (len == 3)
-		sortfour (a, b, findsmallest(a));
+		sortfour(a, b, findsmallest(a));
 	if (len == 4)
-		sortfive (a, b, findsmallest(a));
+		sortfive(a, b, findsmallest(a));
 }

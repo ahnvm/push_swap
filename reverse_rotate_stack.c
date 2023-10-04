@@ -6,7 +6,7 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 16:27:30 by acan              #+#    #+#             */
-/*   Updated: 2023/10/04 22:08:29 by acan             ###   ########.fr       */
+/*   Updated: 2023/10/05 00:29:21 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,44 +16,44 @@ void	rra(t_stack **a, int flag)
 {
 	t_stack	*tmp;
 	int		lastindex;
-	
+
 	tmp = ft_stacklast((*a));
-	lastindex = ft_stacklast((*a)) ->index;
-	ft_stacklast ((*a)) ->next = *a;
+	lastindex = ft_stacklast((*a))->index;
+	ft_stacklast((*a))->next = *a;
 	while ((*a))
 	{
 		if ((*a)->index == lastindex - 1)
 		{
-			(*a) ->next = NULL;
-			break;
+			(*a)->next = NULL;
+			break ;
 		}
-		(*a) = (*a) ->next;
+		(*a) = (*a)->next;
 	}
 	(*a) = tmp;
 	if (flag == 0)
-		ft_putstr_fd ("rra\n",1);
+		ft_putstr_fd("rra\n", 1);
 }
 
 void	rrb(t_stack **b, int flag)
 {
 	t_stack	*tmp;
 	int		lastindex;
-	
+
 	tmp = ft_stacklast((*b));
-	lastindex = ft_stacklast((*b)) ->index;
-	ft_stacklast ((*b)) ->next = *b;
+	lastindex = ft_stacklast((*b))->index;
+	ft_stacklast((*b))->next = *b;
 	while ((*b))
 	{
 		if ((*b)->index == lastindex - 1)
 		{
-			(*b) ->next = NULL;
-			break;
+			(*b)->next = NULL;
+			break ;
 		}
-		(*b) = (*b) ->next;
+		(*b) = (*b)->next;
 	}
 	(*b) = tmp;
 	if (flag == 0)
-		ft_putstr_fd ("rrb\n",1);
+		ft_putstr_fd("rrb\n", 1);
 }
 
 void	rrr(t_stack **a, t_stack **b)
@@ -62,6 +62,6 @@ void	rrr(t_stack **a, t_stack **b)
 	{
 		rra(a, 1);
 		rrb(b, 1);
-		ft_putstr_fd ("rrr\n",1);
+		ft_putstr_fd("rrr\n", 1);
 	}
 }

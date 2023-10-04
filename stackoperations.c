@@ -6,7 +6,7 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 18:49:19 by acan              #+#    #+#             */
-/*   Updated: 2023/10/04 22:27:05 by acan             ###   ########.fr       */
+/*   Updated: 2023/10/05 00:28:23 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_stack	*stacknew(int index, int content)
 t_stack	*ft_stacklast(t_stack *stack)
 {
 	t_stack	*tmp;
+
 	if (!stack)
 	{
 		return (NULL);
