@@ -6,114 +6,107 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 16:15:36 by acan              #+#    #+#             */
-/*   Updated: 2023/10/04 15:25:58 by acan             ###   ########.fr       */
+/*   Updated: 2023/10/04 23:55:38 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	movecounter(t_stack **a)
+void	mixedrotate(t_stack **a, t_stack **b, t_stack *node)
 {
-	t_stack	*tmp;
-	long	firstmvcount;
-	int		secondmvcount;
-
-	firstmvcount = 2147483648;
-	secondmvcount = -1;
-	tmp = (*a);
-	while (tmp)
+	while (node->cost && node->isrr == 1)
 	{
-		if (tmp ->index <= ft_stacklast (*a)->index / 2 && tmp->content < getaverage(a))
-			if (tmp->content < fifthbiggest(a,5))
-				if (firstmvcount > tmp->index)
-					firstmvcount = tmp->index;
-		if (tmp ->index > ft_stacklast (*a)->index / 2 && tmp->content < getaverage(a))
-			if (tmp->content < fifthbiggest(a,5))
-				if (secondmvcount < tmp->index)
-					secondmvcount = tmp->index;
-		tmp = tmp->next;
+		rra(a,0);
+		node->cost--;
 	}
-	if (firstmvcount == 2147483648)
-		return (secondmvcount);
-	if (firstmvcount > ft_stacklast(*a)->index-secondmvcount + 1)
-		return (secondmvcount);
-	else
-		return (firstmvcount);
+	while (node->cost && node->isrr == 0)
+	{
+		ra(a,0);
+		node->cost--;
+	}
+	while (node->target_node->cost && node->target_node->isrr == 1)
+	{
+		rrb(b,0);
+		node->target_node->cost--;
+	}
+	while (node->target_node->cost && node->target_node->isrr == 0)
+	{
+		rb(b,0);
+		node->target_node->cost--;
+	}
 }
 
-static int	checkmore(t_stack **a)
+void	revrotatestack(t_stack **a, t_stack **b, t_stack *node)
 {
-	t_stack *tmp;
-	int		i;
-	int		temp;
-
-	tmp = (*a);
-	i = movecounter(a);
-	while (tmp)
+	while (node->cost && node->target_node->cost)
 	{
-		if (tmp->index == i)
-		{
-			temp = tmp->content;
-			if (tmp->next != NULL)
-				tmp = tmp ->next;
-			if (temp > tmp->content)
-				i = tmp->index;
-			return(i);
-		}
-		tmp = tmp->next;
+		rrr(a,b);
+		node->cost--;
+		node->target_node->cost--;
 	}
-	return(i);
+	while (node->cost)
+	{
+		rra(a,0);
+		node->cost--;
+	}
+	while (node->target_node->cost)
+	{
+		rrb(b,0);
+		node->target_node->cost--;
+	}
 }
 
-void	pushback(t_stack **a, t_stack **b)
+void	rotatestack(t_stack **a, t_stack **b, t_stack *node)
 {
-	t_stack	*tmp;
-	int		biggestindex;
-	
-	tmp = (*b);
-	while (ft_stacklast(*b)->index >0)
+	while (node->cost && node->target_node->cost)
 	{
-		biggestindex = getbiggest(b);
-		if (biggestindex >= ft_stacklast(*b)->index/2)
-		{
-			biggestindex = ft_stacklast(*b)->index - biggestindex + 1;
-			while(biggestindex--)
-				rrb(b,0);
-			pa(a,b);
-		}
-		else
-		{
-			while(biggestindex--)
-				rb(b,0);
-			pa(a,b);
-		}
+		rr(a,b);
+		node->cost--;
+		node->target_node->cost--;
 	}
-	pa(a,b);
+	while (node->cost)
+	{
+		ra(a,0);
+		node->cost--;
+	}
+	while (node->target_node->cost)
+	{
+		rb(b,0);
+		node->target_node->cost--;
+	}
 }
 
 void	basicsort(t_stack **a, t_stack **b)
 {
-	int	movecount;
-
-	while (ft_stacklast(*a) -> index >4)
+	t_stack *ret;
+	
+	pb(a,b);
+	pb(a,b);
+	pb(a,b);
+	while (*a)
 	{
-		movecount = checkmore(a);
-		if (movecount >= ((ft_stacklast((*a))->index) / 2))
-			{
-				movecount = ft_stacklast((*a))->index - checkmore(a) + 1;
-				while (movecount-- > 0)
-					rra(a,0);
-				pb(a,b);
-				sorttry(b);
-			}
-		else
+		settarget(a,b);
+		ret = calculatecost(a);
+		if (ret->isrr == ret->target_node->isrr)
 		{
-			while (movecount-- > 0)
-				ra(a,0);
-			pb(a,b);
-			sorttry(b);
+			if (ret->isrr == 0)
+				rotatestack(a,b,ret);
+			else
+				revrotatestack(a,b,ret);
 		}
+		else
+			mixedrotate(a,b,ret);
+		pb(a,b);
 	}
-	sortcheck(a, b, ft_stacklast(*a)->index);
-	pushback(a,b);
+	while (nodeofindex(getbiggest(b),b)->cost)
+	{
+		if(nodeofindex(getbiggest(b),b)->isrr == 1)
+			rrb(b,0);
+		else
+			rb(b,0);
+		nodeofindex(getbiggest(b),b)->cost--;
+	}
+	while (*b)
+		pa(a,b);
 }
+

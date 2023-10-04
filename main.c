@@ -6,7 +6,7 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 15:08:59 by acan              #+#    #+#             */
-/*   Updated: 2023/09/30 16:48:21 by acan             ###   ########.fr       */
+/*   Updated: 2023/10/04 23:53:54 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,31 +24,15 @@ void	print_list(t_stack **mystack)
 	}
 }
 
-void	print_lists(t_stack **mystack, t_stack **mystack2)
+void	print_lists(t_stack **mystack)
 {
 	t_stack	*tmp;
-	t_stack *tmp2;
 
-	tmp2 = (*mystack2);
 	tmp = (*mystack);
-	while (tmp || tmp2)
+	while (tmp)
 	{
-		if (tmp && tmp2)
-		{
-			printf ("%d -->%d ======== %d -->%d\n", tmp -> index, tmp ->content, tmp2->index, tmp2->content);
-			tmp2 = tmp2->next;
-			tmp = tmp ->next;
-		}
-		else if(tmp)
-		{
-			printf ("%d -->%d\n", tmp->index, tmp->content);
-			tmp = tmp ->next;
-		}
-		else if(tmp2)
-		{
-			printf ("%d -->%d\n", tmp2->index, tmp2->content);
-			tmp2 = tmp2 ->next;
-		}
+		printf ("%d -->%d\n", tmp -> index, tmp->cost);
+		tmp = tmp ->next;
 	}
 }
 
@@ -69,8 +53,9 @@ int	main(int ac, char **av)
 	addtostack(last, a);
 	if (!(islistsorted(a)))
 		exit(0);
-	if (ft_stacklast((*a)) ->index < 5)
-		sortcheck(a,b,ft_stacklast((*a))->index);
 	else
+	{
+		setrr(a);
 		basicsort(a,b);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 19:07:04 by acan              #+#    #+#             */
-/*   Updated: 2023/09/25 18:02:17 by acan             ###   ########.fr       */
+/*   Updated: 2023/10/04 22:08:14 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	ra(t_stack **a, int flag)
 	ft_stacklast((*a))->next = (*a);
 	(*a)->next = NULL;
 	(*a) = tmp;
-	indexstack((*a));
 	if (flag == 0)
 		ft_putstr_fd ("ra\n",1);
 }
@@ -33,7 +32,6 @@ void	rb(t_stack **b, int flag)
 	ft_stacklast((*b))->next = (*b);
 	(*b)->next = NULL;
 	(*b) = tmp;
-	indexstack((*b));
 	if (flag == 0)
 		ft_putstr_fd ("rb\n",1);
 }

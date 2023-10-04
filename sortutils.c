@@ -6,7 +6,7 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 16:48:49 by acan              #+#    #+#             */
-/*   Updated: 2023/10/04 15:25:54 by acan             ###   ########.fr       */
+/*   Updated: 2023/10/04 22:22:26 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,20 +82,23 @@ int	getbiggest(t_stack **b)
 	return (retindex);
 }
 
-void	sorttry(t_stack **b)
+int	getsmallest(t_stack **b)
 {
-	if ((*b)->next == NULL)
-		return ;
-	if ((*b)->content < getaverage(b))
-		rb(b,0);
-	else if ((*b)->content < (*b)->next->content)
+	t_stack	*tmp;
+	int		retindex;
+	int		tmpsmallest;
+
+	tmp = (*b);
+	retindex = tmp->index;
+	tmpsmallest = tmp->content;
+	while (tmp)
 	{
-		sb(b,0);
-		if ((*b)->content < ft_stacklast(*b)->content)
+		if (tmp->content < tmpsmallest)
 		{
-			rrb(b,0);
-			sb(b,0);
-			rb(b,0);
+			tmpsmallest = tmp->content;
+			retindex = tmp->index;
 		}
+		tmp = tmp->next;
 	}
+	return (retindex);
 }

@@ -6,7 +6,7 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 18:49:19 by acan              #+#    #+#             */
-/*   Updated: 2023/09/29 15:59:14 by acan             ###   ########.fr       */
+/*   Updated: 2023/10/04 22:27:05 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ t_stack	*stacknew(int index, int content)
 	node -> content = content;
 	node -> index = index;
 	node -> next = NULL;
+	node -> isrr = -1;
+	node -> cost = -1;
+	node -> target_node = NULL;
 	return (node);
 }
 

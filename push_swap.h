@@ -6,7 +6,7 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 14:59:03 by acan              #+#    #+#             */
-/*   Updated: 2023/09/30 17:06:30 by acan             ###   ########.fr       */
+/*   Updated: 2023/10/04 23:18:02 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ typedef struct s_stack
 {
 	int				index;
 	int				content;
+	int				isrr;
+	int				cost;
 	struct s_stack	*next;
+	struct s_stack	*target_node;
 }						t_stack;
 
 void	print_error(char *error);
@@ -56,6 +59,11 @@ void	basicsort(t_stack **a, t_stack **b);
 void	print_list(t_stack **mystack);
 int		fifthbiggest(t_stack **a, int five);
 int		getbiggest(t_stack **b);
-void	sorttry(t_stack **b);
+void	setrr(t_stack **stack);
+t_stack *nodeofindex(int index, t_stack **stack);
+int		getsmallest(t_stack **b);
+void	settarget(t_stack **a, t_stack **b);
+void	setcost(t_stack **a, t_stack **b);
+t_stack	*calculatecost(t_stack **a);
 
 #endif
