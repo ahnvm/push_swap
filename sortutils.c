@@ -6,7 +6,7 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 16:48:49 by acan              #+#    #+#             */
-/*   Updated: 2023/09/30 17:06:21 by acan             ###   ########.fr       */
+/*   Updated: 2023/10/04 15:25:54 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,14 @@ void	sorttry(t_stack **b)
 		return ;
 	if ((*b)->content < getaverage(b))
 		rb(b,0);
+	else if ((*b)->content < (*b)->next->content)
+	{
+		sb(b,0);
+		if ((*b)->content < ft_stacklast(*b)->content)
+		{
+			rrb(b,0);
+			sb(b,0);
+			rb(b,0);
+		}
+	}
 }

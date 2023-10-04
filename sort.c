@@ -6,7 +6,7 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 16:15:36 by acan              #+#    #+#             */
-/*   Updated: 2023/09/30 17:06:43 by acan             ###   ########.fr       */
+/*   Updated: 2023/10/04 15:25:58 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ static int	movecounter(t_stack **a)
 	tmp = (*a);
 	while (tmp)
 	{
-		if (tmp ->index <= ft_stacklast (*a)->index / 2)
+		if (tmp ->index <= ft_stacklast (*a)->index / 2 && tmp->content < getaverage(a))
 			if (tmp->content < fifthbiggest(a,5))
 				if (firstmvcount > tmp->index)
 					firstmvcount = tmp->index;
-		if (tmp ->index > ft_stacklast (*a)->index / 2)
+		if (tmp ->index > ft_stacklast (*a)->index / 2 && tmp->content < getaverage(a))
 			if (tmp->content < fifthbiggest(a,5))
 				if (secondmvcount < tmp->index)
 					secondmvcount = tmp->index;
@@ -41,6 +41,29 @@ static int	movecounter(t_stack **a)
 		return (firstmvcount);
 }
 
+static int	checkmore(t_stack **a)
+{
+	t_stack *tmp;
+	int		i;
+	int		temp;
+
+	tmp = (*a);
+	i = movecounter(a);
+	while (tmp)
+	{
+		if (tmp->index == i)
+		{
+			temp = tmp->content;
+			if (tmp->next != NULL)
+				tmp = tmp ->next;
+			if (temp > tmp->content)
+				i = tmp->index;
+			return(i);
+		}
+		tmp = tmp->next;
+	}
+	return(i);
+}
 
 void	pushback(t_stack **a, t_stack **b)
 {
@@ -74,10 +97,10 @@ void	basicsort(t_stack **a, t_stack **b)
 
 	while (ft_stacklast(*a) -> index >4)
 	{
-		movecount = movecounter(a);
+		movecount = checkmore(a);
 		if (movecount >= ((ft_stacklast((*a))->index) / 2))
 			{
-				movecount = ft_stacklast((*a))->index - movecounter(a) + 1;
+				movecount = ft_stacklast((*a))->index - checkmore(a) + 1;
 				while (movecount-- > 0)
 					rra(a,0);
 				pb(a,b);
