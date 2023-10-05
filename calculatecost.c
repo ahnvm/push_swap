@@ -6,7 +6,7 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 20:54:48 by acan              #+#    #+#             */
-/*   Updated: 2023/10/05 01:24:12 by acan             ###   ########.fr       */
+/*   Updated: 2023/10/05 14:23:29 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ void	setcost(t_stack **a, t_stack **b)
 			tmpa->cost = ft_stacklast(tmpa)->index - tmpa->index + 1;
 		tmpa = tmpa->next;
 	}
+	if (!tmpb)
+		return ;
 	while (tmpb)
 	{
 		if (tmpb->isrr == 0)

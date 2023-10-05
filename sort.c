@@ -6,7 +6,7 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 16:15:36 by acan              #+#    #+#             */
-/*   Updated: 2023/10/05 04:05:29 by acan             ###   ########.fr       */
+/*   Updated: 2023/10/05 16:56:59 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,16 @@ void	basicsort(t_stack **a, t_stack **b)
 {
 	t_stack	*ret;
 
-	pb(a, b);
-	pb(a, b);
+	pb(a,b);
+	pb(a,b);
 	while (*a)
 	{
 		settarget(a, b);
 		ret = calculatecost(a);
+		if (ret->isrr != ret->target_node->isrr)
+		{
+			mixedrotate(a, b, ret);
+		}
 		if (ret->isrr == ret->target_node->isrr)
 		{
 			if (ret->isrr == 0)
@@ -107,8 +111,6 @@ void	basicsort(t_stack **a, t_stack **b)
 			else
 				revrotatestack(a, b, ret);
 		}
-		else
-			mixedrotate(a, b, ret);
 		pb(a, b);
 	}
 	lastsort(a, b);

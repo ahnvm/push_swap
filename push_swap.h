@@ -6,7 +6,7 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 14:59:03 by acan              #+#    #+#             */
-/*   Updated: 2023/10/05 01:30:37 by acan             ###   ########.fr       */
+/*   Updated: 2023/10/05 16:57:08 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 # define PUSH_SWAP_H
 
 # include "./libft/libft.h"
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+# include <stdio.h>
 
 typedef struct s_stack
 {
@@ -61,5 +62,7 @@ int					getsmallest(t_stack **b);
 void				settarget(t_stack **a, t_stack **b);
 void				setcost(t_stack **a, t_stack **b);
 t_stack				*calculatecost(t_stack **a);
+void				rotatestack(t_stack **a, t_stack **b, t_stack *node);
+void				revrotatestack(t_stack **a, t_stack **b, t_stack *node);
 
 #endif

@@ -6,23 +6,11 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 15:08:59 by acan              #+#    #+#             */
-/*   Updated: 2023/10/05 05:00:20 by acan             ###   ########.fr       */
+/*   Updated: 2023/10/05 05:28:01 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	print_list(t_stack **mystack)
-{
-	t_stack	*tmp;
-
-	tmp = (*mystack);
-	while (tmp)
-	{
-		printf("%d -->%d\n", tmp->index, tmp->content);
-		tmp = tmp->next;
-	}
-}
 
 int	main(int ac, char **av)
 {
