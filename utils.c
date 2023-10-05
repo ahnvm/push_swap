@@ -6,7 +6,7 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 16:09:01 by acan              #+#    #+#             */
-/*   Updated: 2023/10/05 01:30:32 by acan             ###   ########.fr       */
+/*   Updated: 2023/10/05 05:00:52 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	myatoi(char *str)
 	int			count;
 	int			sign;
 	long long	result;
+	long long	tmpcontrol;
 
 	count = 0;
 	result = 0;
@@ -59,9 +60,10 @@ int	myatoi(char *str)
 	while (str[count] >= '0' && str[count] <= '9')
 	{
 		result = (result * 10) + str[count] - '0';
-		if (((result * sign) > 2147483647) || ((result * sign) < -2147483648))
+		tmpcontrol = result * sign;
+		if ((tmpcontrol > 2147483647) || (tmpcontrol < -2147483648))
 		{
-			print_error("Value is not inside integer limits\n");
+			print_error("Error\n");
 		}
 		count++;
 	}

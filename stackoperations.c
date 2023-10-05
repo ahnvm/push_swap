@@ -6,7 +6,7 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 18:49:19 by acan              #+#    #+#             */
-/*   Updated: 2023/10/05 00:28:23 by acan             ###   ########.fr       */
+/*   Updated: 2023/10/05 04:17:12 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static t_stack	*ft_stacklast_control(t_stack *stack, int content, int index)
 void	stackadd_back(t_stack **stack, t_stack *new)
 {
 	if (ft_stacklast_control (*stack, new->content, new->index) == NULL)
-		print_error("Duplicate error\n");
+		print_error("Error\n");
 	else
 	{
 		ft_stacklast_control (*stack, new->content, new->index)->next = new;

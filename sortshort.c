@@ -6,32 +6,11 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 17:32:32 by acan              #+#    #+#             */
-/*   Updated: 2023/10/05 00:34:00 by acan             ###   ########.fr       */
+/*   Updated: 2023/10/05 05:23:54 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static int	findsmallest(t_stack **a)
-{
-	t_stack	*tmp;
-	int		min;
-	int		smallest;
-
-	tmp = (*a);
-	min = (*a)->content;
-	smallest = (*a)->index;
-	while (tmp)
-	{
-		if (tmp->content < min)
-		{
-			min = tmp->content;
-			smallest = tmp->index;
-		}
-		tmp = tmp->next;
-	}
-	return (smallest);
-}
 
 static void	sortthree(t_stack **a)
 {
@@ -42,6 +21,7 @@ static void	sortthree(t_stack **a)
 	{
 		ra(a, 0);
 		sa(a, 0);
+		indexstack(*a);
 		rra(a, 0);
 	}
 	else if ((*a)->content > (*a)->next->content)
@@ -62,8 +42,25 @@ static void	sortthree(t_stack **a)
 
 static void	sortfour(t_stack **a, t_stack **b, int smallest)
 {
-	while (smallest--)
-		ra(a, 0);
+	if (!(islistsorted(a)))
+		return ;
+	if (smallest > ft_stacklast(*a)->index / 2)
+	{
+		smallest = ft_stacklast(*a)->index - smallest + 1;
+		while (smallest)
+		{
+			rra(a,0);
+			smallest--;
+		}
+	}
+	else
+	{
+		while (smallest)
+		{
+			ra(a,0);
+			smallest--;
+		}
+	}
 	pb(a, b);
 	sortthree(a);
 	pa(a, b);
@@ -78,12 +75,14 @@ static void	sortfive(t_stack **a, t_stack **b, int smallest)
 	}
 	else
 	{
-		smallest++;
-		while (--smallest)
+		while (smallest)
+		{
 			ra(a, 0);
+			smallest--;
+		}
 	}
 	pb(a, b);
-	sortfour(a, b, findsmallest(a));
+	sortfour(a, b, getsmallest(a));
 	pa(a, b);
 }
 
@@ -94,7 +93,7 @@ void	sortcheck(t_stack **a, t_stack **b, int len)
 	if (len == 2)
 		sortthree(a);
 	if (len == 3)
-		sortfour(a, b, findsmallest(a));
+		sortfour(a, b, getsmallest(a));
 	if (len == 4)
-		sortfive(a, b, findsmallest(a));
+		sortfive(a, b, getsmallest(a));
 }
