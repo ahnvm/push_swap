@@ -6,7 +6,7 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 16:15:36 by acan              #+#    #+#             */
-/*   Updated: 2023/10/05 16:56:59 by acan             ###   ########.fr       */
+/*   Updated: 2023/10/08 14:54:17 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,15 +94,16 @@ void	basicsort(t_stack **a, t_stack **b)
 {
 	t_stack	*ret;
 
-	pb(a,b);
-	pb(a,b);
+	firstsends(a,b, 150, 350);
 	while (*a)
 	{
 		settarget(a, b);
 		ret = calculatecost(a);
 		if (ret->isrr != ret->target_node->isrr)
 		{
-			mixedrotate(a, b, ret);
+			changepath (ret, ret->target_node);
+			if (ret->isrr != ret->target_node->isrr)
+				mixedrotate(a, b, ret);
 		}
 		if (ret->isrr == ret->target_node->isrr)
 		{

@@ -6,7 +6,7 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 15:08:59 by acan              #+#    #+#             */
-/*   Updated: 2023/10/05 05:28:01 by acan             ###   ########.fr       */
+/*   Updated: 2023/10/08 14:54:19 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ int	main(int ac, char **av)
 		print_error("Error\n");
 	if (arglen(last) == 1)
 		return (myatoi(last[0]) - myatoi(last[0]));
-	isvalid1(arglen(last) - 1, av);
 	addtostack(last, a);
 	if (!(islistsorted(a)))
-		print_error("Error\n");
+		exit (0);
 	else if (ft_stacklast(*a)->index < 5)
 		sortcheck(a, b, ft_stacklast(*a)->index);
 	else
 	{
+		// printf("%d -> %d -> %d\n",getaverage(a,0,150), getaverage(a,150,350), getaverage(a,350,500));
 		setrr(a);
 		basicsort(a, b);
 	}
