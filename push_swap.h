@@ -6,7 +6,7 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 14:59:03 by acan              #+#    #+#             */
-/*   Updated: 2023/10/08 18:27:50 by acan             ###   ########.fr       */
+/*   Updated: 2023/10/08 19:37:09 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,5 @@ void				settarget(t_stack **a, t_stack **b);
 void				setcost(t_stack **a, t_stack **b);
 t_stack				*calculatecost(t_stack **a);
 t_stack				*nodeofindex(int index, t_stack **stack);
-t_stack				*recheckcost(t_stack **a, t_stack *node, t_stack *target);
 
 #endif
