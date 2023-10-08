@@ -6,7 +6,7 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 16:09:01 by acan              #+#    #+#             */
-/*   Updated: 2023/10/08 14:07:16 by acan             ###   ########.fr       */
+/*   Updated: 2023/10/08 15:02:51 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,19 +81,4 @@ void	indexstack(t_stack *stack)
 		i++;
 		stack = stack->next;
 	}
-}
-
-int	getaverage(t_stack **a, int start, int end)
-{
-	t_stack *tmp;
-	int		sum;
-	
-	sum = 0;
-	tmp = nodeofindex(start, a);
-	while (tmp->index < ft_stacklast(*a)->index && tmp->index < end)
-	{
-		sum += tmp->content;
-		tmp = tmp->next;
-	}
-	return (sum/(end-start));
 }

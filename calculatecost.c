@@ -6,7 +6,7 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 20:54:48 by acan              #+#    #+#             */
-/*   Updated: 2023/10/05 14:23:29 by acan             ###   ########.fr       */
+/*   Updated: 2023/10/08 18:04:30 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,8 @@ t_stack	*calculatecost(t_stack **a)
 			ret = tmp;
 		else if ((tmp->cost + tmp->target_node->cost) == (ret->cost
 				+ ret->target_node->cost))
-			if (tmp->isrr == tmp->target_node->isrr)
+			if (tmp->isrr == tmp->target_node->isrr
+				&& ret->isrr != ret->target_node->isrr)
 				ret = tmp;
 		tmp = tmp->next;
 	}

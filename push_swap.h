@@ -6,7 +6,7 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 14:59:03 by acan              #+#    #+#             */
-/*   Updated: 2023/10/08 14:35:11 by acan             ###   ########.fr       */
+/*   Updated: 2023/10/08 18:27:50 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,13 @@ void				pa(t_stack **a, t_stack **b);
 void				sortcheck(t_stack **a, t_stack **b, int len);
 int					islistsorted(t_stack **stack);
 void				basicsort(t_stack **a, t_stack **b);
-int					getbiggest(t_stack **b);
-int					getsmallest(t_stack **b);
+int					getbiggest(t_stack **stack);
+int					getsmallest(t_stack **stack);
 void				setrr(t_stack **stack);
 void				settarget(t_stack **a, t_stack **b);
 void				setcost(t_stack **a, t_stack **b);
 t_stack				*calculatecost(t_stack **a);
 t_stack				*nodeofindex(int index, t_stack **stack);
-void				changepath(t_stack *anode, t_stack *bnode);
-int					getaverage(t_stack **a, int start, int end);
-void				firstsends(t_stack **a, t_stack **b, int first, int second);
+t_stack				*recheckcost(t_stack **a, t_stack *node, t_stack *target);
 
 #endif
