@@ -6,7 +6,7 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 16:15:36 by acan              #+#    #+#             */
-/*   Updated: 2023/10/08 19:34:02 by acan             ###   ########.fr       */
+/*   Updated: 2023/10/11 16:13:17 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,8 @@ void	basicsort(t_stack **a, t_stack **b)
 {
 	t_stack	*ret;
 
-	pb (a,b);
-	pb (a,b);
+	pb (a, b);
+	pb (a, b);
 	while (*a)
 	{
 		settarget(a, b);

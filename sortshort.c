@@ -6,7 +6,7 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 17:32:32 by acan              #+#    #+#             */
-/*   Updated: 2023/10/05 05:23:54 by acan             ###   ########.fr       */
+/*   Updated: 2023/10/11 16:12:41 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	sortfour(t_stack **a, t_stack **b, int smallest)
 		smallest = ft_stacklast(*a)->index - smallest + 1;
 		while (smallest)
 		{
-			rra(a,0);
+			rra(a, 0);
 			smallest--;
 		}
 	}
@@ -57,7 +57,7 @@ static void	sortfour(t_stack **a, t_stack **b, int smallest)
 	{
 		while (smallest)
 		{
-			ra(a,0);
+			ra(a, 0);
 			smallest--;
 		}
 	}

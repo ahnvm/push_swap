@@ -6,7 +6,7 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 15:08:59 by acan              #+#    #+#             */
-/*   Updated: 2023/10/08 19:36:09 by acan             ###   ########.fr       */
+/*   Updated: 2023/10/11 16:12:49 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ int	main(int ac, char **av)
 		return (myatoi(last[0]) - myatoi(last[0]));
 	addtostack(last, a);
 	if (!(islistsorted(a)))
-		exit (0);
+		exit(0);
 	else if (ft_stacklast(*a)->index < 5)
 		sortcheck(a, b, ft_stacklast(*a)->index);
 	else
 	{
-		setcost(a,b);
+		setcost(a, b);
 		setrr(a);
 		basicsort(a, b);
 	}
