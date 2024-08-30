@@ -6,11 +6,11 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 16:40:29 by acan              #+#    #+#             */
-/*   Updated: 2023/10/05 00:27:51 by acan             ###   ########.fr       */
+/*   Updated: 2024/08/30 18:03:13 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 void	pa(t_stack **a, t_stack **b)
 {

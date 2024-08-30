@@ -6,11 +6,11 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 16:15:36 by acan              #+#    #+#             */
-/*   Updated: 2023/10/11 16:13:17 by acan             ###   ########.fr       */
+/*   Updated: 2024/08/30 18:03:20 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 void	mixedrotate(t_stack **a, t_stack **b, t_stack *node)
 {

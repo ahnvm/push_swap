@@ -1,5 +1,5 @@
-SRCS =	main.c argparser.c argchecker.c utils.c stackoperations.c swap_stack.c rotate_stack.c\
-		reverse_rotate_stack.c push_stack.c sortshort.c sort.c sortutils.c calculatecost.c
+SRCS =	main.c ./srcs/argparser.c ./srcs/argchecker.c ./srcs/utils.c ./srcs/stackoperations.c ./srcs/swap_stack.c ./srcs/rotate_stack.c\
+        ./srcs/reverse_rotate_stack.c ./srcs/push_stack.c ./srcs/sortshort.c ./srcs/sort.c ./srcs/sortutils.c ./srcs/calculatecost.c
 
 INC_DIR = ./libft
 

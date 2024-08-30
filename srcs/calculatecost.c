@@ -6,11 +6,11 @@
 /*   By: acan <ahmetabdullahcan@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 20:54:48 by acan              #+#    #+#             */
-/*   Updated: 2023/10/08 19:33:59 by acan             ###   ########.fr       */
+/*   Updated: 2024/08/30 18:03:12 by acan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 void	setrr(t_stack **stack)
 {
